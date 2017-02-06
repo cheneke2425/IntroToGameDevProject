@@ -41,7 +41,6 @@ public class SwitchPositions : MonoBehaviour
 				secondObj.transform.position = firstObjPos;
 
 				firstClick = true;
-				Debug.Log("2nd");
 			}
 		}
 	}
