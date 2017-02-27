@@ -2,9 +2,9 @@
 using System.Collections;
 
 public class SwitchPositions : MonoBehaviour
-{
-	public GameObject firstObj;
-	public GameObject secondObj;
+{	
+	private GameObject firstObj;
+	private GameObject secondObj;
 
 	bool firstClick = true;
 	private Vector3 SelectedPos;
@@ -26,21 +26,25 @@ public class SwitchPositions : MonoBehaviour
 									   Camera.main.ScreenToWorldPoint(Input.mousePosition).y);
 			RaycastHit2D hit = Physics2D.Raycast(SelectedPos, Vector2.zero, 0f);
 
-			if (hit && firstClick)
-			{
-				firstObj = hit.transform.gameObject;
-				firstObjPos = firstObj.transform.position;
-				firstClick = false;
-			}
-			else if (hit && !firstClick)
-			{
-				secondObj = hit.transform.gameObject;
-				secondObjPos = secondObj.transform.position;
 
-				firstObj.transform.position = secondObjPos;
-				secondObj.transform.position = firstObjPos;
+			if (hit && hit.transform.gameObject.CompareTag("Paddle"))
+			{
+				if (firstClick)
+				{
+					firstObj = hit.transform.gameObject;
+					firstObjPos = firstObj.transform.position;
+					firstClick = false;
+				}
+				else if (!firstClick)
+				{
+					secondObj = hit.transform.gameObject;
+					secondObjPos = secondObj.transform.position;
 
-				firstClick = true;
+					firstObj.transform.position = secondObjPos;
+					secondObj.transform.position = firstObjPos;
+
+					firstClick = true;
+				}
 			}
 		}
 	}

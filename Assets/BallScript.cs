@@ -49,5 +49,5 @@ public class BallScript : MonoBehaviour {
 			Debug.Log("YOU LOSE!");
 		}
 	}
-			    
+
 }
