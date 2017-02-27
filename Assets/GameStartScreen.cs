@@ -26,5 +26,9 @@ public class GameStartScreen : MonoBehaviour {
 		Application.LoadLevel("Level#1");
 	}
 
+	public void Level2Pressed()
+	{
+		Application.LoadLevel("Level#2");
+	}
 
 }

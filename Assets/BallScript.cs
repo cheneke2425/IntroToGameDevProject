@@ -38,14 +38,15 @@ public class BallScript : MonoBehaviour {
 
 	void OnTriggerEnter2D(Collider2D other)
 	{
-		GetComponent<Rigidbody2D>().velocity = new Vector3(0, 0, 0);
 
 		if (other.gameObject.CompareTag("Goal"))
 		{
+			GetComponent<Rigidbody2D>().velocity = new Vector3(0, 0, 0);
 			Debug.Log("YOU WIN!");
 		}
 		else if (other.gameObject.CompareTag("Obstacle"))
 		{
+			GetComponent<Rigidbody2D>().velocity = new Vector3(0, 0, 0);
 			Debug.Log("YOU LOSE!");
 		}
 	}
