@@ -13,7 +13,6 @@ public class BallScript : MonoBehaviour {
 	void Start () {
 
 		transform.position = new Vector3(xPos, yPos, 0);
-		GetComponent<Rigidbody2D>().velocity = new Vector3(xSpeed, ySpeed, 0);
 	
 	}
 	
@@ -31,6 +30,7 @@ public class BallScript : MonoBehaviour {
 			if (hit && hit.transform.gameObject.CompareTag("Replay"))
 			{
 				Start();
+				GetComponent<Rigidbody2D>().velocity = new Vector3(xSpeed, ySpeed, 0);
 			} 
 		}
 	
