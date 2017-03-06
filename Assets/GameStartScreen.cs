@@ -7,17 +7,17 @@ public class GameStartScreen : MonoBehaviour {
 	public GameObject levelSelection;
 	public float xPos = -799f;
 	public float yPos = 328f;
-	public float smoothTime = 1f;
+	public float XPos = 0f;
+	public float YPos = 0f;
+
 
 	public void StartPressed()
 	{
-		Vector3 menuPos = menu.transform.position;
-		Vector3 levelPos = levelSelection.transform.position;
 		Vector3 otherPos = new Vector3(xPos, yPos, 0);
-		Vector3 velocity = Vector3.zero;
+		Vector3 newPos = new Vector3(XPos, YPos, 0);
 
-		menu.transform.position = Vector3.SmoothDamp(menuPos, otherPos, ref velocity, smoothTime);
-		levelSelection.transform.position = Vector3.SmoothDamp(levelPos, menuPos, ref velocity, smoothTime);
+		menu.transform.position = otherPos;
+		levelSelection.transform.position = newPos;
 
 	}
 
