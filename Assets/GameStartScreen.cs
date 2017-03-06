@@ -7,7 +7,7 @@ public class GameStartScreen : MonoBehaviour {
 	public GameObject levelSelection;
 	public float xPos = -799f;
 	public float yPos = 328f;
-	public float smoothTime = 0.3f;
+	public float smoothTime = 1f;
 
 	public void StartPressed()
 	{

@@ -9,6 +9,8 @@ public class BallScript : MonoBehaviour {
 	public float xPos = -7f;
 	public float yPos = -3.02f;
 
+	public GameObject YouWin;
+
 	// Use this for initialization
 	void Start () {
 
@@ -43,6 +45,7 @@ public class BallScript : MonoBehaviour {
 		{
 			GetComponent<Rigidbody2D>().velocity = new Vector3(0, 0, 0);
 			Debug.Log("YOU WIN!");
+			YouWin.transform.position = new Vector3(0, 0, 0);
 		}
 		else if (other.gameObject.CompareTag("Obstacle"))
 		{
