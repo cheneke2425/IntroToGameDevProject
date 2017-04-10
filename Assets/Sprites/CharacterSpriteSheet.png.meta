@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 06744ae26df4a4194a8a7c96e121b0e5
-timeCreated: 1491793311
+timeCreated: 1491840753
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -30,6 +30,13 @@ TextureImporter:
     21300046: CharacterSpriteSheet_23
     21300048: CharacterSpriteSheet_24
     21300050: CharacterSpriteSheet_25
+    21300052: CharacterSpriteSheet_26
+    21300054: CharacterSpriteSheet_27
+    21300056: CharacterSpriteSheet_28
+    21300058: CharacterSpriteSheet_29
+    21300060: CharacterSpriteSheet_30
+    21300062: CharacterSpriteSheet_31
+    21300064: CharacterSpriteSheet_32
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -126,7 +133,7 @@ TextureImporter:
         width: 393.66663
         height: 472.3999
       alignment: 9
-      pivot: {x: 0.5, y: 0.45}
+      pivot: {x: 0.49999985, y: 0.45}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
@@ -149,8 +156,8 @@ TextureImporter:
         serializedVersion: 2
         x: 1965
         y: 4251.6
-        width: 393.66675
-        height: 472.3999
+        width: 393.66666
+        height: 472.4
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -162,8 +169,8 @@ TextureImporter:
         serializedVersion: 2
         x: 2358
         y: 4251.6
-        width: 393.66675
-        height: 472.3999
+        width: 393.66666
+        height: 472.4
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -253,7 +260,7 @@ TextureImporter:
         serializedVersion: 2
         x: 393
         y: 3780
-        width: 787
+        width: 795
         height: 473
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -264,8 +271,8 @@ TextureImporter:
       name: CharacterSpriteSheet_14
       rect:
         serializedVersion: 2
-        x: 794
-        y: 3315
+        x: 802
+        y: 3323
         width: 394
         height: 472
       alignment: 0
@@ -409,6 +416,97 @@ TextureImporter:
         serializedVersion: 2
         x: 393
         y: 3307.6
+        width: 393.66666
+        height: 472.4
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: CharacterSpriteSheet_26
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 2835.6
+        width: 393.66666
+        height: 472.4
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: CharacterSpriteSheet_27
+      rect:
+        serializedVersion: 2
+        x: 393
+        y: 2835.6
+        width: 393.66666
+        height: 472.4
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: CharacterSpriteSheet_28
+      rect:
+        serializedVersion: 2
+        x: 786
+        y: 2835.6
+        width: 393.66666
+        height: 472.4
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: CharacterSpriteSheet_29
+      rect:
+        serializedVersion: 2
+        x: 1179
+        y: 2835.6
+        width: 393.66666
+        height: 472.4
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: CharacterSpriteSheet_30
+      rect:
+        serializedVersion: 2
+        x: 1572
+        y: 2835.6
+        width: 393.66666
+        height: 472.4
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: CharacterSpriteSheet_31
+      rect:
+        serializedVersion: 2
+        x: 1965
+        y: 2835.6
+        width: 393.66666
+        height: 472.4
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: CharacterSpriteSheet_32
+      rect:
+        serializedVersion: 2
+        x: 2358
+        y: 2835.6
         width: 393.66666
         height: 472.4
       alignment: 0

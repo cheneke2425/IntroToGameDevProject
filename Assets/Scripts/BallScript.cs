@@ -11,6 +11,7 @@ public class BallScript : MonoBehaviour {
 
 	public GameObject YouWin;
 
+	public Animator winAnimator;
 	private Animator animator;
 
 	private float xValue;
@@ -20,7 +21,7 @@ public class BallScript : MonoBehaviour {
 	void Start () {
 
 		transform.position = new Vector3(xPos, yPos, 0);
-	
+
 	}
 	
 	// Update is called once per frame
@@ -74,13 +75,17 @@ public class BallScript : MonoBehaviour {
 
 	void Win()
 	{
+		animator = winAnimator;
+		animator.SetTrigger("Win");
 		GetComponent<Rigidbody2D>().velocity = new Vector3(0, 0, 0);
 		Debug.Log("YOU WIN!");
-		YouWin.transform.position = new Vector3(0, 0, 0);
+		StartCoroutine(WaitForNextLevel());
 	}
 
 	void Lose()
 	{
+		animator = gameObject.GetComponent<Animator>();
+		animator.SetTrigger("Lose");
 		GetComponent<Rigidbody2D>().velocity = new Vector3(0, 0, 0);
 		Debug.Log("YOU LOSE!");
 		StartCoroutine(WaitForRestart());
@@ -91,6 +96,11 @@ public class BallScript : MonoBehaviour {
 		GetComponent<Rigidbody2D>().velocity = new Vector3(xSpeed, ySpeed, 0);
 	}
 
+	void NextLevel()
+	{
+		YouWin.transform.position = new Vector3(0, 0, 0);
+	}
+
 	IEnumerator WaitForMovement()
 	{
 		yield return new WaitForSeconds(0.833f);
@@ -99,8 +109,14 @@ public class BallScript : MonoBehaviour {
 
 	IEnumerator WaitForRestart()
 	{
-		yield return new WaitForSeconds(3);
-		Application.LoadLevel ("Level#1");
+		yield return new WaitForSeconds(2);
+		Application.LoadLevel("Level#1");
+	}
+
+	IEnumerator WaitForNextLevel()
+	{
+		yield return new WaitForSeconds(2);
+		NextLevel();
 	}
 
 }

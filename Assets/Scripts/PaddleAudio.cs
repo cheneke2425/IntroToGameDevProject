@@ -19,6 +19,6 @@ public class PaddleAudio : MonoBehaviour {
 
 	public void play()
 	{
-		gameObject.GetComponent<AudioSource>().PlayOneShot(bouncing, 1f);
+		gameObject.GetComponent<AudioSource>().PlayOneShot(bouncing, 0.5f);
 	}
 }

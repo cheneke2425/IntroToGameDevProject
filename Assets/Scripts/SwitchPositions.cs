@@ -46,7 +46,7 @@ public class SwitchPositions : MonoBehaviour
 					firstAnimator = firstObj.GetComponent<Animator>();
 					firstAnimator.SetBool("OnSelect", true);
 
-					source.PlayOneShot(PaddleSelected, 1f);
+					source.PlayOneShot(PaddleSelected, 0.5f);
 				}
 				else if (firstObj == hit.transform.gameObject)
 				{
@@ -54,7 +54,7 @@ public class SwitchPositions : MonoBehaviour
 					firstAnimator.SetBool("OnSelect", false);
 					firstObj = null;
 
-					source.PlayOneShot(PaddleDeSelected, 1f);
+					source.PlayOneShot(PaddleDeSelected, 0.5f);
 				}
 				else if (firstObj != null && firstObj != hit.transform.gameObject)
 				{
@@ -63,7 +63,7 @@ public class SwitchPositions : MonoBehaviour
 					secondAnimator = secondObj.GetComponent<Animator>();
 					secondAnimator.SetBool("OnSelect", true);
 
-					source.PlayOneShot(PaddleSelected, 1f);
+					source.PlayOneShot(PaddleSelected, 0.5f);
 				}
 			}
 		}
@@ -84,7 +84,7 @@ public class SwitchPositions : MonoBehaviour
 		firstAnimator.SetBool("OnSelect", false);
 		secondAnimator.SetBool("OnSelect", false);
 
-		source.PlayOneShot(PaddleSwap, 1f);
+		source.PlayOneShot(PaddleSwap, 0.5f);
 
 		firstObj = null;
 		secondObj = null;
