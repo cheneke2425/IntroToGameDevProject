@@ -55,6 +55,13 @@ public class BallScript : MonoBehaviour {
 
 	void OnTriggerEnter2D(Collider2D other)
 	{
+		if (other.gameObject.CompareTag("Paddle"))
+		{
+			GameObject paddle = other.gameObject;
+			PaddleAudio paddleaudio = paddle.GetComponent<PaddleAudio>();
+			paddleaudio.play();
+		}
+
 		if (other.gameObject.CompareTag("Goal"))
 		{
 			Win();
