@@ -632,11 +632,11 @@ GameObject:
   - 92: {fileID: 512487298}
   - 124: {fileID: 512487297}
   - 81: {fileID: 512487296}
-  - 114: {fileID: 512487301}
   - 114: {fileID: 512487302}
   - 82: {fileID: 512487306}
   - 82: {fileID: 512487305}
   - 82: {fileID: 512487304}
+  - 114: {fileID: 512487301}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
