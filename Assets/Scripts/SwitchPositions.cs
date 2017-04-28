@@ -10,8 +10,7 @@ public class SwitchPositions : MonoBehaviour
 
 	//bool firstClick = true;
 	private Vector3 SelectedPos;
-	private Vector3 firstObjPos;
-	private Vector3 secondObjPos;
+
 
 	public AudioClip PaddleSelected;
 	public AudioClip PaddleDeSelected;
@@ -42,7 +41,6 @@ public class SwitchPositions : MonoBehaviour
 				if (firstObj == null)
 				{
 					firstObj = hit.transform.gameObject;
-					firstObjPos = firstObj.transform.position;
 					firstAnimator = firstObj.GetComponent<Animator>();
 					firstAnimator.SetBool("OnSelect", true);
 
@@ -59,11 +57,10 @@ public class SwitchPositions : MonoBehaviour
 				else if (firstObj != null && firstObj != hit.transform.gameObject)
 				{
 					secondObj = hit.transform.gameObject;
-					secondObjPos = secondObj.transform.position;
 					secondAnimator = secondObj.GetComponent<Animator>();
 					secondAnimator.SetBool("OnSelect", true);
 
-					source.PlayOneShot(PaddleSelected, 0.5f);
+					//source.PlayOneShot(PaddleSelected, 0.5f);
 				}
 			}
 		}
@@ -76,17 +73,36 @@ public class SwitchPositions : MonoBehaviour
 
 	void Swap()
 	{
-		firstObj.transform.position = secondObjPos;
-		secondObj.transform.position = firstObjPos;
-
 		firstAnimator = firstObj.GetComponent<Animator>();
 		secondAnimator = secondObj.GetComponent<Animator>();
 		firstAnimator.SetBool("OnSelect", false);
 		secondAnimator.SetBool("OnSelect", false);
 
+		StartCoroutine(SwapInSecond(0.7f, firstObj, secondObj));
+
 		source.PlayOneShot(PaddleSwap, 0.5f);
 
 		firstObj = null;
 		secondObj = null;
+
 	}
+
+	IEnumerator SwapInSecond(float second, GameObject fObj, GameObject sedObj)
+	{
+		float startSwapTime = Time.time;
+		Vector3 firstObjStartPos = fObj.transform.position;
+		Vector3 secondObjStartPos = sedObj.transform.position;
+		while (Time.time - startSwapTime <= second)
+		{
+			float t = (Time.time - startSwapTime)/second;
+			t = Mathf.Sin(t * Mathf.PI / 2f);
+
+			fObj.transform.position = Vector3.Lerp(firstObjStartPos, secondObjStartPos, t);
+			sedObj.transform.position = Vector3.Lerp(secondObjStartPos, firstObjStartPos, t);
+			yield return null;
+		}
+		fObj.transform.position = secondObjStartPos;
+		sedObj.transform.position = firstObjStartPos;
+	}
+
 }

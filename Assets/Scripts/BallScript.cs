@@ -17,6 +17,8 @@ public class BallScript : MonoBehaviour {
 	private float xValue;
 	private float yValue;
 
+	public int i;
+
 	// Use this for initialization
 	void Start () {
 
@@ -110,7 +112,7 @@ public class BallScript : MonoBehaviour {
 	IEnumerator WaitForRestart()
 	{
 		yield return new WaitForSeconds(2);
-		Application.LoadLevel("Level#1");
+		Application.LoadLevel("Level#"+i);
 	}
 
 	IEnumerator WaitForNextLevel()

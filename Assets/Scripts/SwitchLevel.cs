@@ -3,8 +3,10 @@ using System.Collections;
 
 public class SwitchLevel : MonoBehaviour {
 
+	public int nextLevel;
+
 	public void NextLevelButtonPressed()
 	{
-		Application.LoadLevel("Level#2");
+		Application.LoadLevel("Level#"+nextLevel);
 	}
 }
