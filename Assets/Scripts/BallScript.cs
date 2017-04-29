@@ -1,8 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class BallScript : MonoBehaviour {
-
+public class BallScript : MonoBehaviour
+{
 	public float xSpeed = 0.1f;
 	public float ySpeed = 0.1f;
 
@@ -20,60 +20,75 @@ public class BallScript : MonoBehaviour {
 	public int i;
 
 	// Use this for initialization
-	void Start () {
-
-		transform.position = new Vector3(xPos, yPos, 0);
-
+	void Start()
+	{
 	}
-	
+
 	// Update is called once per frame
-	void Update () {
+	void Update()
+	{
+		GameObject objs = GameObject.Find("AllObjs");
+		whenlevelloaded whenloaded = objs.GetComponent<whenlevelloaded>();
 
-		Vector3 SelectedPos;
-
-		if (Input.GetMouseButtonDown(0))
+		if (whenloaded.loaded)
 		{
-			SelectedPos = new Vector2(Camera.main.ScreenToWorldPoint(Input.mousePosition).x,
-									   Camera.main.ScreenToWorldPoint(Input.mousePosition).y);
-			RaycastHit2D hit = Physics2D.Raycast(SelectedPos, Vector2.zero, 0f);
+			//transform.position = new Vector3(xPos, yPos, 0);
 
-			if (hit && hit.transform.gameObject.CompareTag("Replay"))
+			Vector3 SelectedPos;
+
+			if (Input.GetMouseButtonDown(0))
 			{
-				animator = hit.transform.gameObject.GetComponent<Animator>();
-				animator.SetTrigger("OnClick");
-				StartCoroutine(WaitForMovement());
-			} 
-		}
+				SelectedPos = new Vector2(Camera.main.ScreenToWorldPoint(Input.mousePosition).x,
+										   Camera.main.ScreenToWorldPoint(Input.mousePosition).y);
+				RaycastHit2D hit = Physics2D.Raycast(SelectedPos, Vector2.zero, 0f);
 
-		xValue = GetComponent<Rigidbody2D>().velocity.x;
-		yValue = GetComponent<Rigidbody2D>().velocity.y;
+				if (hit && hit.transform.gameObject.CompareTag("Replay"))
+				{
+					animator = hit.transform.gameObject.GetComponent<Animator>();
+					animator.SetTrigger("OnClick");
+					StartCoroutine(WaitForMovement());
+				}
+			}
 
-		if (GetComponent<Rigidbody2D>().velocity != new Vector2(0,0))
-		{
-			float angle = Mathf.Atan2(yValue, xValue) * Mathf.Rad2Deg;
-			transform.rotation = Quaternion.AngleAxis(angle+90, Vector3.forward);
+			xValue = GetComponent<Rigidbody2D>().velocity.x;
+			yValue = GetComponent<Rigidbody2D>().velocity.y;
+
+			if (GetComponent<Rigidbody2D>().velocity != new Vector2(0, 0))
+			{
+				float angle = Mathf.Atan2(yValue, xValue) * Mathf.Rad2Deg;
+				transform.rotation = Quaternion.AngleAxis(angle + 90, Vector3.forward);
+			}
 		}
 
 	}
 
 	void OnTriggerEnter2D(Collider2D other)
 	{
-		if (other.gameObject.CompareTag("Paddle"))
-		{
-			GameObject paddle = other.gameObject;
-			PaddleAudio paddleaudio = paddle.GetComponent<PaddleAudio>();
-			paddleaudio.play();
-		}
+		GameObject objs = GameObject.Find("AllObjs");
+		whenlevelloaded whenloaded = objs.GetComponent<whenlevelloaded>();
 
-		if (other.gameObject.CompareTag("Goal"))
+		if (whenloaded.loaded)
 		{
-			Win();
-		}
-		else if (other.gameObject.CompareTag("Obstacle"))
-		{
-			Lose();
+			if (other.gameObject.CompareTag("Paddle"))
+			{
+				GameObject paddle = other.gameObject;
+
+				PaddleAudio paddleaudio = paddle.GetComponent<PaddleAudio>();
+				paddleaudio.play();
+
+			}
+
+			if (other.gameObject.CompareTag("Goal"))
+			{
+				Win();
+			}
+			else if (other.gameObject.CompareTag("Obstacle"))
+			{
+				Lose();
+			}
 		}
 	}
+
 
 	void Win()
 	{
@@ -112,7 +127,9 @@ public class BallScript : MonoBehaviour {
 	IEnumerator WaitForRestart()
 	{
 		yield return new WaitForSeconds(2);
-		Application.LoadLevel("Level#"+i);
+		GameObject restart = GameObject.Find("SwitchLevel");
+		SwitchLevel switchLevel = restart.GetComponent<SwitchLevel>();
+		switchLevel.WhenLoseGame();
 	}
 
 	IEnumerator WaitForNextLevel()

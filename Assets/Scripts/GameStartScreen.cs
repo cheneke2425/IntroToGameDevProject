@@ -1,22 +1,23 @@
-﻿using UnityEngine;
+﻿using UnityEngine.SceneManagement;
 using System.Collections;
 
-public class GameStartScreen : MonoBehaviour {
+public class GameStartScreen : UnityEngine.MonoBehaviour
+{
 
 
 	public void StartPressed()
 	{
-		Application.LoadLevel("Level#1");
+		SceneManager.LoadScene("Level#1");
 	}
 
 	public void Level1Pressed()
 	{
-		Application.LoadLevel("Level#1");
+		SceneManager.LoadScene("Level#1");
 	}
 
 	public void Level2Pressed()
 	{
-		Application.LoadLevel("Level#2");
+		SceneManager.LoadScene("Level#2");
 	}
 
 }

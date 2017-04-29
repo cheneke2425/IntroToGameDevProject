@@ -1,12 +1,24 @@
-﻿using UnityEngine;
+﻿using UnityEngine.SceneManagement;
 using System.Collections;
 
-public class SwitchLevel : MonoBehaviour {
+public class SwitchLevel : UnityEngine.MonoBehaviour
+{
 
 	public int nextLevel;
+	public int thisLevel;
 
 	public void NextLevelButtonPressed()
 	{
-		Application.LoadLevel("Level#"+nextLevel);
+		SceneManager.LoadScene("Level#" + nextLevel);
+	}
+
+	public void ReplayLevelBUttonPressed()
+	{
+		SceneManager.LoadScene("Level#" + thisLevel);
+	}
+
+	public void WhenLoseGame()
+	{
+		SceneManager.LoadScene("Level#" + thisLevel);
 	}
 }
