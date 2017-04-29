@@ -30,7 +30,7 @@ GameObject:
   - 82: {fileID: 82000012228085720}
   m_Layer: 0
   m_Name: CharacterSprite
-  m_TagString: Replay
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -335,6 +335,7 @@ MonoBehaviour:
   yPos: 2.72
   YouWin: {fileID: 0}
   winAnimator: {fileID: 0}
+  i: 0
 --- !u!114 &114000013615386484
 MonoBehaviour:
   m_ObjectHideFlags: 1

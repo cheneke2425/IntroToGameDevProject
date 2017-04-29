@@ -36,11 +36,32 @@ public class whenlevelloaded : MonoBehaviour {
 		loaded = true;
 	}
 
+	public IEnumerator ExitInSecond(float second)
+	{
+		loaded = false;
+
+		float StartEnteringTime = Time.time;
+		while (Time.time - StartEnteringTime <= second)
+		{
+			float t = (Time.time - StartEnteringTime) / second;
+			transform.position = new Vector3(0, easeInBack(0, -10, t), 0);
+			yield return null;
+		}
+	}
+
 	public float easeOutBack(float start, float end, float value)
 	{
 		float s = 1.70158f;
 		end -= start;
 		value = (value) - 1;
 		return end * ((value) * value * ((s + 1) * value + s) + 1) + start;
+	}
+
+	public float easeInBack(float start, float end, float value)
+	{
+		end -= start;
+		value /= 1;
+		float s = 1.70158f;
+		return end * (value) * value * ((s + 1) * value - s) + start;
 	}
 }

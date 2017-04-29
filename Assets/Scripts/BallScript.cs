@@ -6,9 +6,6 @@ public class BallScript : MonoBehaviour
 	public float xSpeed = 0.1f;
 	public float ySpeed = 0.1f;
 
-	public float xPos = -7f;
-	public float yPos = -3.02f;
-
 	public GameObject YouWin;
 
 	public Animator winAnimator;
@@ -16,8 +13,6 @@ public class BallScript : MonoBehaviour
 
 	private float xValue;
 	private float yValue;
-
-	public int i;
 
 	// Use this for initialization
 	void Start()
@@ -32,7 +27,6 @@ public class BallScript : MonoBehaviour
 
 		if (whenloaded.loaded)
 		{
-			//transform.position = new Vector3(xPos, yPos, 0);
 
 			Vector3 SelectedPos;
 
@@ -42,7 +36,7 @@ public class BallScript : MonoBehaviour
 										   Camera.main.ScreenToWorldPoint(Input.mousePosition).y);
 				RaycastHit2D hit = Physics2D.Raycast(SelectedPos, Vector2.zero, 0f);
 
-				if (hit && hit.transform.gameObject.CompareTag("Replay"))
+				if (hit && hit.transform.gameObject.CompareTag("Player"))
 				{
 					animator = hit.transform.gameObject.GetComponent<Animator>();
 					animator.SetTrigger("OnClick");
@@ -113,8 +107,17 @@ public class BallScript : MonoBehaviour
 		GetComponent<Rigidbody2D>().velocity = new Vector3(xSpeed, ySpeed, 0);
 	}
 
-	void NextLevel()
+	IEnumerator NextLevel(float second)
 	{
+		yield return new WaitForSeconds(1);
+
+		float StartEnteringTime = Time.time;
+		while (Time.time - StartEnteringTime <= second)
+		{
+			float t = (Time.time - StartEnteringTime) / second;
+			YouWin.transform.position = new Vector3(0, easeOutBack(10, 0, t), 0);
+			yield return null;
+		}
 		YouWin.transform.position = new Vector3(0, 0, 0);
 	}
 
@@ -135,7 +138,19 @@ public class BallScript : MonoBehaviour
 	IEnumerator WaitForNextLevel()
 	{
 		yield return new WaitForSeconds(2);
-		NextLevel();
+
+		GameObject objs = GameObject.Find("AllObjs");
+		whenlevelloaded whenexit = objs.GetComponent<whenlevelloaded>();
+		StartCoroutine(whenexit.ExitInSecond(1));
+
+		StartCoroutine(NextLevel(1));
 	}
 
+	public float easeOutBack(float start, float end, float value)
+	{
+		float s = 1.70158f;
+		end -= start;
+		value = (value) - 1;
+		return end * ((value) * value * ((s + 1) * value + s) + 1) + start;
+	}
 }

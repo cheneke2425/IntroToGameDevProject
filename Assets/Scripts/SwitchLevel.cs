@@ -21,4 +21,9 @@ public class SwitchLevel : UnityEngine.MonoBehaviour
 	{
 		SceneManager.LoadScene("Level#" + thisLevel);
 	}
+
+	public void MainMenuButtonPressed()
+	{
+		SceneManager.LoadScene("StartScene");
+	}
 }

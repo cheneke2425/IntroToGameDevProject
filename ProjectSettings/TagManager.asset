@@ -8,6 +8,8 @@ TagManager:
   - Goal
   - Replay
   - Paddle
+  - NextLevel
+  - MainMenu
   layers:
   - Default
   - TransparentFX
