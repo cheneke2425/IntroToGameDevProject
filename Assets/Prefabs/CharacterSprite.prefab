@@ -41,7 +41,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1000012197203668}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0.7071068, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
@@ -331,11 +331,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   xSpeed: 0
   ySpeed: -2.5
-  xPos: -1.2
-  yPos: 2.72
   YouWin: {fileID: 0}
   winAnimator: {fileID: 0}
-  i: 0
 --- !u!114 &114000013615386484
 MonoBehaviour:
   m_ObjectHideFlags: 1

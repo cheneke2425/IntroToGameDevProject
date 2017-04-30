@@ -6,6 +6,7 @@ public class BallScript : MonoBehaviour
 	public float xSpeed = 0.1f;
 	public float ySpeed = 0.1f;
 
+	public GameObject character;
 	public GameObject YouWin;
 
 	public Animator winAnimator;
@@ -17,6 +18,7 @@ public class BallScript : MonoBehaviour
 	// Use this for initialization
 	void Start()
 	{
+		character.transform.localPosition = Vector3.zero;
 	}
 
 	// Update is called once per frame

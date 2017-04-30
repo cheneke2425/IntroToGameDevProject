@@ -3,6 +3,7 @@ using System.Collections;
 
 public class whenlevelloaded : MonoBehaviour {
 
+	public GameObject character;
 	public Vector3 targetPos;
 	public bool loaded = false;
 
@@ -26,12 +27,14 @@ public class whenlevelloaded : MonoBehaviour {
 		float StartEnteringTime = Time.time;
 		while (Time.time - StartEnteringTime <= second)
 		{
+			character.transform.localPosition = Vector3.zero;
 			float t = (Time.time - StartEnteringTime) / second;
 			transform.position = new Vector3(targetPos.x, easeOutBack(targetPos.y + 10, targetPos.y, t), targetPos.z);
 			yield return null;
 		}
 
 		transform.position = targetPos;
+		character.transform.localPosition = Vector3.zero;
 
 		loaded = true;
 	}
@@ -47,6 +50,7 @@ public class whenlevelloaded : MonoBehaviour {
 			transform.position = new Vector3(0, easeInBack(0, -10, t), 0);
 			yield return null;
 		}
+
 	}
 
 	public float easeOutBack(float start, float end, float value)
