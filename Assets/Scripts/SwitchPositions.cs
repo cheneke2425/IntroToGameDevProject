@@ -10,6 +10,7 @@ public class SwitchPositions : MonoBehaviour
 
 	private Vector3 SelectedPos;
 
+	public bool SwapIsCalled = false;
 
 	public AudioClip PaddleSelected;
 	public AudioClip PaddleDeSelected;
@@ -26,11 +27,11 @@ public class SwitchPositions : MonoBehaviour
 	// Update is called once per frame
 	void Update()
 	{
-		GameObject objs = GameObject.Find("AllObjs");
+		/*GameObject objs = GameObject.Find("AllObjs");
 		whenlevelloaded whenloaded = objs.GetComponent<whenlevelloaded>();
 
 		if (whenloaded.loaded)
-		{
+		{*/
 			source = GetComponent<AudioSource>();
 
 			if (Input.GetMouseButtonDown(0))
@@ -73,7 +74,7 @@ public class SwitchPositions : MonoBehaviour
 			{
 				Swap();
 			}
-		}
+		//}
 
 	}
 
@@ -99,6 +100,7 @@ public class SwitchPositions : MonoBehaviour
 		Vector3 secondObjStartPos = sedObj.transform.position;
 		while (Time.time - startSwapTime <= second)
 		{
+			SwapIsCalled = true;
 			float t = (Time.time - startSwapTime) / second;
 			//t = Mathf.Sin(t * Mathf.PI /2f);
 
@@ -108,6 +110,8 @@ public class SwitchPositions : MonoBehaviour
 		}
 		fObj.transform.position = secondObjStartPos;
 		sedObj.transform.position = firstObjStartPos;
+
+		SwapIsCalled = false;
 	}
 
 	public float easeOutBack(float start, float end, float value)

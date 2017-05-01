@@ -23,11 +23,11 @@ public class BallScript : MonoBehaviour
 	// Update is called once per frame
 	void Update()
 	{
-		GameObject objs = GameObject.Find("AllObjs");
+		/*GameObject objs = GameObject.Find("AllObjs");
 		whenlevelloaded whenloaded = objs.GetComponent<whenlevelloaded>();
 
 		if (whenloaded.loaded)
-		{
+		{*/
 
 			Vector3 SelectedPos;
 
@@ -53,7 +53,7 @@ public class BallScript : MonoBehaviour
 				float angle = Mathf.Atan2(yValue, xValue) * Mathf.Rad2Deg;
 				transform.rotation = Quaternion.AngleAxis(angle + 90, Vector3.forward);
 			}
-		}
+		//}
 
 	}
 

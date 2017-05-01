@@ -7,8 +7,12 @@ public class whenlevelloaded : MonoBehaviour {
 	public Vector3 targetPos;
 	public bool loaded = false;
 
+
 	// Use this for initialization
 	void Start () {
+
+		character.GetComponent<BallScript>().enabled = false;
+		character.GetComponent<SwitchPositions>().enabled =false;
 
 		transform.position = new Vector3(targetPos.x, targetPos.y + 10, targetPos.z);
 		if (loaded == false)
@@ -19,6 +23,16 @@ public class whenlevelloaded : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+
+		if (loaded)
+		{
+			character.GetComponent<BallScript>().enabled = true;
+			character.GetComponent<SwitchPositions>().enabled = true;
+		}
+		else {
+			character.GetComponent<BallScript>().enabled = false;
+			character.GetComponent<SwitchPositions>().enabled = false;
+		}
 
 	}
 
