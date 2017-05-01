@@ -94,6 +94,9 @@ public class TutorialScript : MonoBehaviour {
 			if ( checkVelocity != Vector3.zero)
 			{
 				StartCoroutine(ExitInSecond(1, thdT, thirdTPos));
+				paddle1.transform.GetChild(0).gameObject.layer = LayerMask.NameToLayer("Default");
+				paddle2.transform.GetChild(0).gameObject.layer = LayerMask.NameToLayer("Default");
+				paddle3.transform.GetChild(0).gameObject.layer = LayerMask.NameToLayer("Default");
 			}
 		}
 	
