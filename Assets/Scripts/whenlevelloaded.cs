@@ -7,17 +7,20 @@ public class whenlevelloaded : MonoBehaviour {
 	public Vector3 targetPos;
 	public bool loaded = false;
 
-	public GameObject paddle1;
-	public GameObject paddle2;
-	public GameObject paddle3;
+	public GameObject paddle1 = null;
+	public GameObject paddle2 = null;
+	public GameObject paddle3 = null;
 
 
 	// Use this for initialization
 	void Start () {
 
-		paddle1.transform.GetChild(0).gameObject.layer = LayerMask.NameToLayer("Default");
-		paddle2.transform.GetChild(0).gameObject.layer = LayerMask.NameToLayer("Default");
-		paddle3.transform.GetChild(0).gameObject.layer = LayerMask.NameToLayer("Default");
+		if (paddle1 != null && paddle2 != null && paddle3 != null)
+		{
+			paddle1.transform.GetChild(0).gameObject.layer = LayerMask.NameToLayer("Default");
+			paddle2.transform.GetChild(0).gameObject.layer = LayerMask.NameToLayer("Default");
+			paddle3.transform.GetChild(0).gameObject.layer = LayerMask.NameToLayer("Default");
+		}
 
 		character.GetComponent<BallScript>().enabled = false;
 		character.GetComponent<SwitchPositions>().enabled =false;

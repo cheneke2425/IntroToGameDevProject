@@ -41,7 +41,7 @@ public class BallScript : MonoBehaviour
 				{
 					animator = hit.transform.gameObject.GetComponent<Animator>();
 					animator.SetTrigger("OnClick");
-					StartCoroutine(WaitForMovement());
+				StartCoroutine(BeforeMovement(0.75f));
 				}
 			}
 
@@ -100,12 +100,25 @@ public class BallScript : MonoBehaviour
 		animator.SetTrigger("Lose");
 		GetComponent<Rigidbody2D>().velocity = new Vector3(0, 0, 0);
 		Debug.Log("YOU LOSE!");
-		StartCoroutine(WaitForRestart());
+		StartCoroutine(WaitForNextLevel());
 	}
 
-	void Movement()
+	IEnumerator BeforeMovement(float second)
 	{
-		GetComponent<Rigidbody2D>().velocity = new Vector3(xSpeed, ySpeed, 0);
+		float StartEnteringTime = Time.time;
+		while (Time.time - StartEnteringTime <= second)
+		{
+			float t = (Time.time - StartEnteringTime) / second;
+			t = Mathf.Sin(t * Mathf.PI);
+			this.gameObject.transform.localPosition = Vector3.Lerp(new Vector3(0,0,0), new Vector3(-0.3f,0,0), t);
+			yield return null;
+		}
+
+		if (Time.time - StartEnteringTime > second)
+		{
+			GetComponent<Rigidbody2D>().velocity = new Vector3(xSpeed, ySpeed, 0);
+		}
+
 	}
 
 	IEnumerator NextLevel(float second)
@@ -122,11 +135,6 @@ public class BallScript : MonoBehaviour
 		YouWin.transform.position = new Vector3(0, 0, 0);
 	}
 
-	IEnumerator WaitForMovement()
-	{
-		yield return new WaitForSeconds(0.833f);
-		Movement();
-	}
 
 	IEnumerator WaitForRestart()
 	{
